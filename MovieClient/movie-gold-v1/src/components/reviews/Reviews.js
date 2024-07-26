@@ -1,40 +1,43 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import api from '../../api/axiosConfig';
 import { useParams } from 'react-router-dom';
-import { Container, Row, Col} from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import ReviewForm from '../reviewFrom/ReviewForm';
-
 import React from 'react';
 
-const Reviews = ({getMovieData, movie, reviews = [], setReviews}) => {
-
+const Reviews = ({ getMovieData, movie }) => {
     const revText = useRef();
+    const [reviews, setReviews] = useState([]);
     let params = useParams();
     const movieId = params.movieId;
 
     useEffect(() => {
         getMovieData(movieId);
-    }, [])
+        fetchReviews();
+    }, []);
+
+    const fetchReviews = async () => {
+        try {
+            const response = await api.get(`/api/v1/reviews/${movieId}`);
+            setReviews(response.data);
+        } catch (error) {
+            console.error("Error fetching reviews:", error);
+        }
+    };
 
     const addReview = async (e) => {
         e.preventDefault();
-
         const rev = revText.current;
 
-        try{
-            const response = await api.post("/api/v1/reviews", {reviewBody:rev.value, imdbId:movieId});
-
-            const updatedReviews = [...reviews, {body:rev.value}];
-
+        try {
+            const response = await api.post("/api/v1/reviews", { reviewBody: rev.value, imdbId: movieId });
+            const updatedReviews = [...reviews, response.data];
             rev.value = "";
-
             setReviews(updatedReviews);
-
-        } catch(err) {
+        } catch (err) {
             console.error(err);
         }
-    }
-
+    };
 
     return (
         <Container>
@@ -46,40 +49,34 @@ const Reviews = ({getMovieData, movie, reviews = [], setReviews}) => {
                     <img src={movie?.poster} alt="" />
                 </Col>
                 <Col>
-                    {
-                        <>
+                    <>
+                        <Row>
+                            <Col>
+                                <ReviewForm handleSubmit={addReview} revText={revText} labelText="Write a Review?" />
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <hr />
+                            </Col>
+                        </Row>
+                    </>
+                    {reviews?.map((r, index) => (
+                        <React.Fragment key={index}>
                             <Row>
-                                <Col>
-                                    <ReviewForm handleSubmit={addReview} revText={revText} labelText="Write a Review?" />
-                                </Col>
+                                <Col>{r.body}</Col>
                             </Row>
                             <Row>
                                 <Col>
                                     <hr />
                                 </Col>
                             </Row>
-                        </>
-                    }
-                    {
-                        reviews?.map((r) => {
-                            return (
-                                <>
-                                    <Row>
-                                        <Col>{r.body}</Col>
-                                    </Row>
-                                    <Row>
-                                        <Col>
-                                            <hr />
-                                        </Col>
-                                    </Row>
-                                </>
-                            )
-                        })
-                    }
+                        </React.Fragment>
+                    ))}
                 </Col>
             </Row>
         </Container>
-    )
-}
+    );
+};
 
-export default Reviews
+export default Reviews;
