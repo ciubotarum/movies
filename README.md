@@ -23,12 +23,4 @@ information and user reviews. The backend is developed using Spring Boot and the
 - **Languages**: CSS, JavaScript
 - **IDE**: Visual Studio Code
 
-## Getting Started
-
-### Prerequisites
-
-- **Java Development Kit (JDK) 8+**
-- **Maven**
-- **Node.js and npm**
-- **MongoDB**
 
