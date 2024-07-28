@@ -1,5 +1,6 @@
-package ciubotarum.movies;
+package ciubotarum.imdb.movie;
 
+import ciubotarum.imdb.reviews.Review;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

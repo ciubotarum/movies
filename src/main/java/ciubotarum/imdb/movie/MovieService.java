@@ -1,5 +1,7 @@
-package ciubotarum.movies;
+package ciubotarum.imdb.movie;
 
+import ciubotarum.imdb.movie.Movie;
+import ciubotarum.imdb.movie.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

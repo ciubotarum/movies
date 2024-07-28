@@ -1,4 +1,4 @@
-package ciubotarum.movies.configurations;
+package ciubotarum.imdb.configurations;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

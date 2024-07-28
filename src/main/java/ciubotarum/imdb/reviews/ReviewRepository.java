@@ -1,5 +1,6 @@
-package ciubotarum.movies;
+package ciubotarum.imdb.reviews;
 
+import ciubotarum.imdb.reviews.Review;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;

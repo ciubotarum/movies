@@ -1,4 +1,4 @@
-package ciubotarum.movies;
+package ciubotarum.imdb.reviews;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
