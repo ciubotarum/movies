@@ -11,9 +11,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Users {
+public class User {
     @Id
     private ObjectId id;
     private String username;
     private String password;
+
+    public User(String username) {
+        this.username = username;
+    }
 }
