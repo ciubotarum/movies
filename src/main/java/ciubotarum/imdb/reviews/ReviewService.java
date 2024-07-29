@@ -2,8 +2,6 @@ package ciubotarum.imdb.reviews;
 
 import ciubotarum.imdb.movie.Movie;
 import ciubotarum.imdb.movie.MovieService;
-import ciubotarum.imdb.reviews.Review;
-import ciubotarum.imdb.reviews.ReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;

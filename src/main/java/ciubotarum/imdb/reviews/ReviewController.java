@@ -1,7 +1,5 @@
 package ciubotarum.imdb.reviews;
 
-import ciubotarum.imdb.reviews.Review;
-import ciubotarum.imdb.reviews.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
