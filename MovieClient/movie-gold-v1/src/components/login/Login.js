@@ -1,6 +1,7 @@
 import '../../components/register/RegisterPage.css';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import api from '../../api/axiosConfig';
 
 const Login = () => {
 
@@ -13,26 +14,29 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const response = await fetch('/api/v1/users/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ username, password })
-        });
+        try {
+            const response = await api.post('/api/v1/users/login', {
+                username: username,
+                password: password
+            });
 
-        if (response.ok) {
-            // Handle successful login
-            const user = await response.json();
-            console.log('Login successful:', user);
-            // Clear error message
-            setError('');
-            // Redirect to home page
-            navigate('/');
-        } else {
+            if (response.status === 200) {
+                // Handle successful login
+                const user = response.data;
+                console.log('Login successful:', user);
+                // Clear error message
+                setError('');
+                // Redirect to home page
+                navigate('/');
+            }
+        } catch (error) {
             // Handle login error
-            setError('Username or password is incorrect');
-            console.error('Login failed');
+            if (error.response) {
+                setError(error.response.data.message);
+                console.error('Login failed', error.response.data);
+            } else {
+                console.error('Login failed', error);
+            }
         }
     };
 
@@ -52,6 +56,6 @@ const Login = () => {
 
     );
 
-}
+};
 
 export default Login;
