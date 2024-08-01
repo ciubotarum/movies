@@ -17,7 +17,7 @@ public class UserController {
     public ResponseEntity<User> register(@RequestBody Map<String, String> payload) {
         return new ResponseEntity<>(userService.register(payload.get("username"), payload.get("password")), HttpStatus.CREATED);
     }
-    @GetMapping("/login")
+    @PostMapping("/login")
     public ResponseEntity<User> login(@RequestBody Map<String, String> payload) {
         return new ResponseEntity<>(userService.login(payload.get("username"), payload.get("password")), HttpStatus.OK);
     }
