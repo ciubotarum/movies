@@ -54,3 +54,8 @@ body {
 .registration-form button:hover {
     color: white;
 }
+
+.error {
+    color: red;
+    margin-bottom: 10px;
+}
