@@ -55,9 +55,9 @@ const RegisterPage = () => {
                 <p>User Name:</p>
                 <input type="text" name="username" placeholder="User" value={username} onChange={(e) => setUsername(e.target.value)}></input>
                 <p>Password:</p>
-                <input type="text" name="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}></input>
+                <input type="password" name="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}></input>
                 <p> Validate Password:</p>
-                <input type="text" name="confirmPassword" placeholder="Confirm Password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}></input>
+                <input type="password" name="confirmPassword" placeholder="Confirm Password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}></input>
                 <button  type="submit">Register</button>
             </form>
         </div>
