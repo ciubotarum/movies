@@ -28,11 +28,10 @@ public class UserService {
     }
 
     public User login(String username, String password) {
-        String encodedPassword = passwordEncoder.encode(password);
-        if(!userRepository.existsByUsernameAndPassword(username, encodedPassword)){
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Wrong username or password");
+        User user = userRepository.getByUsername(username);
+        if (user == null || !passwordEncoder.matches(password, user.getPassword())) {
+            throw new RuntimeException("Invalid username or password");
         }
-
-        return userRepository.getByUsername(username);
+        return user;
     }
 }
