@@ -1,0 +1,64 @@
+[{
+  "_id": {
+    "$oid": "66a7559f5502853b8e7efe75"
+  },
+  "username": "john",
+  "password": "123456",
+  "_class": "ciubotarum.imdb.users.User"
+},
+{
+  "_id": {
+    "$oid": "66a75dc7b96a303602f22f42"
+  },
+  "username": "tiara",
+  "password": "mmmmmm",
+  "_class": "ciubotarum.imdb.users.User"
+},
+{
+  "_id": {
+    "$oid": "66a89c75b499864cf2720135"
+  },
+  "username": "lia",
+  "password": "ttt",
+  "_class": "ciubotarum.imdb.users.User"
+},
+{
+  "_id": {
+    "$oid": "66ab8594be8ec1508de53965"
+  },
+  "username": "din",
+  "password": "987654",
+  "_class": "ciubotarum.imdb.users.User"
+},
+{
+  "_id": {
+    "$oid": "66ab9907b36d1e5c0b054d9b"
+  },
+  "username": "mia",
+  "password": "pupi",
+  "_class": "ciubotarum.imdb.users.User"
+},
+{
+  "_id": {
+    "$oid": "66abcc5697d5a64fc8db43ec"
+  },
+  "username": "ana",
+  "password": "$2a$10$M7OGgGjByzeMPZOvZfYQhe95EVocpyMFVIxTInJN707oo/RIpNNHW",
+  "_class": "ciubotarum.imdb.users.User"
+},
+{
+  "_id": {
+    "$oid": "66abcd56e6cea60b6b215843"
+  },
+  "username": "testuser",
+  "password": "$2a$10$KMmx7uuhN7iHSoHEo5UGJuU/R.gO8VoJnPIs/HHaagfeEFaF6Ly6a",
+  "_class": "ciubotarum.imdb.users.User"
+},
+{
+  "_id": {
+    "$oid": "66abcfe05ff7562b64c5d50c"
+  },
+  "username": "test",
+  "password": "$2a$10$wHpQBZYVYqme2lPma0zBBe4HD.fXngwQgqDg2Q.JLthsBs7P9QLRq",
+  "_class": "ciubotarum.imdb.users.User"
+}]
