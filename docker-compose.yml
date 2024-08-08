@@ -1,10 +1,21 @@
 version: '3.8'
+
 services:
   mongodb:
-    image: mongo
-    build: .
+    build: ./mongo
     container_name: movie-api-db
     ports:
       - "27017:27017"
     volumes:
-      - ~/mongodbdata:/data/db
+      - mongo-data:/data/db
+  mongodb_seed:
+    build: ./mongo
+    container_name: movie-api-db-seed
+    command: ["bash", "/docker-entrypoint-initdb.d/init-mongo.sh"]
+    depends_on:
+      - mongodb
+
+
+volumes:
+  mongo-data:
+    driver: local
