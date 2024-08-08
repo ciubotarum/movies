@@ -27,6 +27,7 @@ public class SecurityConfig {
                                 .requestMatchers("/api/v1/movies/**").permitAll() // Allow unauthenticated access to movie endpoints
                                 .requestMatchers("/api/v1/users/register").permitAll() // Allow registration without authentication
                                 .requestMatchers("/api/v1/users/login").permitAll() // Allow login without authentication
+                                .requestMatchers("/api/v1/reviews/**").permitAll() // Allow login without authentication
                                 .anyRequest().authenticated() // Secure all other endpoints
                 );
 
