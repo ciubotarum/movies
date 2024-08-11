@@ -21,6 +21,6 @@ This project is a web application tailored for movie enthusiasts, offering featu
 - **IDE**: IntelliJ IDEA
 
 ### Frontend
-- **Technologies**: HTML, CSS, JavaScript
+- **Technologies**: CSS, JavaScript
 - **IDE**: Visual Studio Code
 
