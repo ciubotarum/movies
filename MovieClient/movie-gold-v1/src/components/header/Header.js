@@ -1,12 +1,11 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faVideoSlash } from "@fortawesome/free-solid-svg-icons";
-import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
+import React, { useState } from 'react';
 import { Link, NavLink } from "react-router-dom";
+import { Navbar, Container, Nav, Button } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faVideoSlash } from '@fortawesome/free-solid-svg-icons';
 
-const Header = () => {
+const Header = ({isLoggedIn, onLogout}) => {
+    console.log("Header - isLoggedIn:", isLoggedIn);
 
     return (
         <Navbar bg="dark" variant="dark" expand="lg">
@@ -24,16 +23,22 @@ const Header = () => {
                         <NavLink className="nav-link" to="/">Home</NavLink>
                         <NavLink className="nav-link" to="/watchList">Watch List</NavLink>
                     </Nav>
-                    <Link to="/login">
-                        <Button variant="outline-info" className="me-2" to="/login">Login</Button>
-                    </Link>
-                    <Link to="/register">
-                        <Button variant="outline-info" >Register</Button>
-                    </Link>
+                    {isLoggedIn ? (
+                        <Button variant="outline-info" onClick={onLogout}>Logout</Button>
+                    ) : (
+                        <>
+                            <Link to="/login">
+                                <Button variant="outline-info" className="me-2">Login</Button>
+                            </Link>
+                            <Link to="/register">
+                                <Button variant="outline-info">Register</Button>
+                            </Link>
+                        </>
+                    )}
                 </Navbar.Collapse>
             </Container>
         </Navbar>
-    )
-}
+    );
+};
 
-export default Header
+export default Header;

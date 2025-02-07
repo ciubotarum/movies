@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../../api/axiosConfig';
 
-const Login = () => {
+const Login = ({onLogin}) => {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -23,20 +23,16 @@ const Login = () => {
             if (response.status === 200) {
                 // Handle successful login
                 const user = response.data;
-                console.log('Login successful:', user);
+                // console.log('Login successful:', user);
                 // Clear error message
-                setError('');
+                // setError('');
+                onLogin(user);
                 // Redirect to home page
                 navigate('/');
             }
         } catch (error) {
             // Handle login error
-            if (error.response) {
-                setError(error.response.data.message);
-                console.error('Login failed', error.response.data);
-            } else {
-                console.error('Login failed', error);
-            }
+            setError(error.response?.data?.message || "Login failed");
         }
     };
 

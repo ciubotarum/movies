@@ -16,6 +16,25 @@ function App() {
   const [movies, setMovies] = useState();
   const [movie, setMovie] = useState();
   const [reviews, setReviews] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const user = localStorage.getItem('user');
+    setIsLoggedIn(!!user); // Convert to boolean
+  }, []);
+
+  // Function to update state on login
+  const handleLogin = (user) => {
+    console.log("User loggerd in: ", user);
+    localStorage.setItem('user', JSON.stringify(user));
+    setIsLoggedIn(true);
+  };
+
+  // Function to handle logout
+  const handleLogout = () => {
+    localStorage.removeItem('user');
+    setIsLoggedIn(false);
+  };
 
   const getMovies = async () => {
 
@@ -52,14 +71,14 @@ function App() {
 
   return (
     <div className="App">
-      <Header/>
+      <Header isLoggedIn={isLoggedIn} onLogout={handleLogout}/>
       <Routes>
         <Route path='/' element={<Layout/>}>
           <Route path='/' element={<Home movies={movies}/>} ></Route>
           <Route path='/Trailer/:ytTrailerId' element={<Trailer/>}></Route>
           <Route path='/Reviews/:movieId' element={<Reviews getMovieData = {getMovieData} movie={movie} reviews={reviews} setReviews={setReviews} />}></Route>
           <Route path='*' element={<NotFound/>}></Route>
-          <Route path='/login' element={<Login/>}></Route>
+          <Route path='/login' element={<Login onLogin={handleLogin}/>}></Route>
           <Route path='/register' element={<RegisterPage/>}></Route>
         </Route>
       </Routes>
