@@ -1,4 +1,3 @@
-version: '3.8'
 
 services:
   mongodb:
@@ -8,13 +7,7 @@ services:
       - "27017:27017"
     volumes:
       - mongo-data:/data/db
-  mongodb_seed:
-    build: ./mongo
-    container_name: movie-api-db-seed
-    command: ["bash", "/docker-entrypoint-initdb.d/init-mongo.sh"]
-    depends_on:
-      - mongodb
-
+      - ./mongo/init-mongo.sh:/docker-entrypoint-initdb.d/init-mongo.sh
 
 volumes:
   mongo-data:
